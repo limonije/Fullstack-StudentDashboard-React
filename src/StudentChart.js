@@ -1,19 +1,20 @@
 import React from "react";
 import data from "./data/data.json";
+//import Student from "./routes/Student";
 import { VictoryChart, VictoryBar, VictoryGroup, VictoryAxis, VictoryTheme, VictoryContainer } from 'victory';
 
 let newData = []
 data.map(item => {return newData.push(item)})
 console.log(newData)
 
-let studentData = newData
-console.log("This is student data unfiltered: ", studentData)
-let filteredItems = studentData.filter((item) => {return item.name === "Sandra"})
-console.log("This is data for Sandra:", filteredItems)
+// let studentData = newData
+// console.log("This is student data unfiltered: ", studentData)
+// let filteredItems = studentData.filter((item) => {return item.name === "Sandra"})
+// console.log("This is data for Sandra:", filteredItems)
 
 class Chart extends React.Component {
-    constructor() {
-      super() 
+    constructor(props) {
+      super(props) 
       this.state = {
        
         studentData: [],
@@ -35,21 +36,39 @@ class Chart extends React.Component {
             this.setState({[name]: value}) 
     }
 
-
-
+    
     filterStudents() {
-    console.log('This is working')
-    }
+
+    let value = this.props.student 
+    console.log('This is working:', value)
+    this.setState((prevState) => {
+      let newStudentData = [...prevState.studentData]
+      console.log("This is student data unfiltered: ", newStudentData)
+      let filteredItems = newData.filter((item) => {return item.name === value})
+      console.log("This is data for:", value, ":", filteredItems) 
+      let newState = {...prevState, studentData: filteredItems}
+      console.log(newState)
+      //return newState; 
+})
+}
+
+   componentDidUpdate() {
+    this.filterStudents()
+  }
+   
+
     // let studentData = newData
     // console.log("This is student data unfiltered: ", studentData)
     // let filteredItems = studentData.filter((item) => {return item.name === "Sandra"})
     // console.log("This is data for Sandra:", filteredItems)
     // }
 
+
        
     render() {
       return (
         <div>
+          
           <br />
             <label className="diff">
                         <input 
@@ -100,7 +119,7 @@ class Chart extends React.Component {
             <VictoryBar
               style={{ data: { fill: "#4f8bc9" } }}
               barWidth={7}  
-              data={filteredItems}
+              data={this.state.studentData}
               x={"assignment"}
               y={"difficultyRating"}
             
@@ -110,7 +129,7 @@ class Chart extends React.Component {
             <VictoryBar 
               style={{ data: { fill: "#ffb212" } }}
               barWidth={7}
-              data={filteredItems}
+              data={this.state.studentData}
               x={"assignment"}
               y={"enjoymentRating"}
               
