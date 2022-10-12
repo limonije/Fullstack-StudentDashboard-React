@@ -97,8 +97,9 @@ button {
 
 .Student-nav {
   border-right: solid 1px #d4e7fa;
-    padding: 1rem;
-    box-shadow: 0 4px 6px -6px #222;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -6px #222;
+  overflow: auto;
 }
 
 .studentLink {
@@ -108,38 +109,41 @@ button {
 } 
 
 .Assignment-div {
-  display: flexbox;
+  display: flex;
 }
 
 .Assignment-nav {
-    border-left: solid 1px;
-    padding: 1rem;
-    display: flexbox;
+  border-right: solid 1px  #d4e7fa;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -6px #222;
+  width: 15em;
+  height: 19em;
+  overflow: auto;
 }
 
 .assignmentLink {
   text-decoration: none;
-  display: inline-block; 
-  padding: 3px;
-  margin: 0.3rem;
-  font-size: 16px;
-  border: 1px solid #d4e7fa;
-  border-radius: 30px;
+  display: block; 
+  margin: 1rem 0;
 } 
 
-a:link{
+a:link {
   color:#1d334c;
 }
-a:visited{
+
+a:visited {
   color:#1d334c;
 }
-a:hover{
+
+a:hover {
   color:#1d334c;
 }
-a:focus{
+
+a:focus {
   color:#ffb212;
 }
-a:active{
+
+a:active {
   color:#ffb212;
 }
 

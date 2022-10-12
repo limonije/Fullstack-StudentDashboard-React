@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import StudentChart from "../StudentChart"
+import StudentChart from "../charts/StudentChart"
 
 export default function Student() {
     let params = useParams();

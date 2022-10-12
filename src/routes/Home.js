@@ -1,4 +1,4 @@
-import Chart from "../Chart";
+import Chart from "../charts/Chart";
 
 export default function Home() {
     return (

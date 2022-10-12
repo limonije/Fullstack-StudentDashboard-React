@@ -7,8 +7,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <nav className="App-nav">
-          <a href="http://localhost:3000/Home"><img src={logo} className="App-logo" alt="logo"/ ></a> 
-          <Link className="appLink" to="/Home">Home</Link> |{" "}  
+          <a href="http://localhost:3000/"><img src={logo} className="App-logo" alt="logo"/ ></a> 
+          <Link className="appLink" to="/">Home</Link> |{" "}  
           <Link className="appLink" to="/Students">Select Student</Link> |{" "}  
           <Link className="appLink" to="/Assignments">Select Assignment</Link>
         </nav>
