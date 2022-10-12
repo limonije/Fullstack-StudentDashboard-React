@@ -1,33 +1,24 @@
 import { Outlet, Link } from "react-router-dom";
+import logo from './logoWinc.png';
 import './App.css';
-//import Chart from './Chart'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Student Dashboard</h1>
-        <nav
-          style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-          }}
-        >
-        <Link to="/Home">Home</Link> |{" "}  
-        <Link to="/Students">Select Student</Link> 
+        <nav className="App-nav">
+          <a href="http://localhost:3000/Home"><img src={logo} className="App-logo" alt="logo"/ ></a> 
+          <Link className="appLink" to="/Home">Home</Link> |{" "}  
+          <Link className="appLink" to="/Students">Select Student</Link> |{" "}  
+          <Link className="appLink" to="/Assignments">Select Assignment</Link>
         </nav>
-        <Outlet />
-      </header> 
-      
-      {/* <main>
-       <Chart />
-      </main>  */}
+      <Outlet />  
+      </header>
       <footer>
-        <p>Copyright 2022</p>
+        <p>Copyright 2022 Spelenderwijs Programmeren | All rights reserved</p>
       </footer>
-      
     </div>
-  );
+  )
 }
 
 export default App;

@@ -5,20 +5,19 @@ import { VictoryChart, VictoryBar, VictoryGroup, VictoryAxis, VictoryTheme, Vict
 let newData = []
 data.map(item => {return newData.push(item)})
 
-class StudentChart extends React.Component {
+class AssignmentChart extends React.Component {
     constructor(props) {
       super(props) 
       this.state = {
-        studentData: [],
+        assignmentData: [],
         difficulty: true,
         enjoyment: true,
       }
-
+    
       this.handleChange = this.handleChange.bind(this)
-      this.filterStudents = this.filterStudents.bind(this)
+      this.filterAssignments = this.filterAssignments.bind(this)
     }
 
-             
     handleChange(event) {
         const {name, value, type, checked} = event.target
         type === "checkbox" ? 
@@ -26,24 +25,24 @@ class StudentChart extends React.Component {
             this.setState({[name]: value}) 
     }
 
-    filterStudents() {
-      let value = this.props.student 
-      let filteredItems = newData.filter((item) => {return item.name === value})
-    
-        this.setState((prevState) => {
-          let newState = {...prevState, studentData: filteredItems}
-          return newState; 
-      })
-    }
+    filterAssignments() {
+      let value = this.props.assignment 
+      let filteredItems = newData.filter((item) => {return item.assignment === value})
+      
+      this.setState((prevState) => {
+        let newState = {...prevState, assignmentData: filteredItems}
+        return newState; 
+    })
+  }
 
     componentDidMount(){
-      this.filterStudents()
-    }
+      this.filterAssignments()
+  }
 
     componentDidUpdate(prevProps) {
-      if (this.props.student !== prevProps.student) {
-      this.filterStudents(this.props.student)}
-    }
+      if (this.props.assignment !== prevProps.assignment) {
+      this.filterAssignments(this.props.assignment)}
+  }
    
     render() {
       return (
@@ -68,17 +67,17 @@ class StudentChart extends React.Component {
             /> 
             Enjoyment
           </label>
-                             
+          
           <VictoryChart
             domainPadding={{x: 15}}
-            domain={{ x: [0, 56], y: [0.0, 5.0] }}
+            domain={{ x: [0, 10], y: [0.0, 5.0] }}
             theme={VictoryTheme.material}
             width={1200} height={300}
             containerComponent={<VictoryContainer responsive={false}/>}
           >
           <VictoryAxis 
             style={{ ticks: {stroke: "grey", size: 5},
-            tickLabels: {angle: 45, fontSize: 12, padding: 5, textAnchor: 'begin'} }}
+            tickLabels: {fontSize: 16, padding: 5} }}
           />
           <VictoryAxis 
             dependentAxis
@@ -90,9 +89,9 @@ class StudentChart extends React.Component {
           {this.state.difficulty ?   
             <VictoryBar
               style={{ data: { fill: "#4f8bc9" } }}
-              barWidth={7}  
-              data={this.state.studentData}
-              x={"assignment"}
+              barWidth={10}  
+              data={this.state.assignmentData}
+              x={"name"}
               y={"difficultyRating"}
             /> 
           : null}
@@ -100,9 +99,9 @@ class StudentChart extends React.Component {
           {this.state.enjoyment ?
             <VictoryBar 
               style={{ data: { fill: "#ffb212" } }}
-              barWidth={7}
-              data={this.state.studentData}
-              x={"assignment"}
+              barWidth={10}
+              data={this.state.assignmentData}
+              x={"name"}
               y={"enjoymentRating"}
             /> 
           : null}
@@ -113,4 +112,4 @@ class StudentChart extends React.Component {
     )}
 }    
 
-export default StudentChart
+export default AssignmentChart

@@ -4,9 +4,9 @@ import StudentChart from "../StudentChart"
 export default function Student() {
     let params = useParams();
     return (
-        <main style={{ padding: "1rem" }}>
+        <main>
             <h2>{params.StudentId}</h2>
             <StudentChart student={params.StudentId} />
         </main>
     );
-  }
+}
